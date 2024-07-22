@@ -1,0 +1,119 @@
+#app {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: black;
+    margin-top: 30px;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.logo {
+  width: 100px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  padding: 10px;
+  animation: logoani 1s linear infinite;
+}
+
+
+@keyframes logoani {
+  0% {
+    box-shadow: 2px 2px 4px skyblue; 
+  }
+  50% {
+    box-shadow: 2px 2px 5px orange;
+  }
+  100% {
+    box-shadow: 2px 2px 4px green; 
+  }
+}
+
+.register input {
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+    display: block;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid orange;
+}
+
+.register button {
+    width: 330px;
+    height: 40px;
+    border: 1px solid;
+    background: skyblue;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.register button:hover {
+    background: white;
+    color: skyblue;
+}
+
+.login  {
+    input{
+        width: 300px;
+        height: 40px;
+        padding-left: 20px;
+        display: block;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid skyblue;
+    }
+}
+
+.login button {
+    width: 330px;
+    height: 40px;
+    border: 1px solid;
+    background: orange;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login button:hover {
+    background: white;
+    color: orange;
+}
+.add input{
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+    display: block;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid skyblue;
+}
+.add select{
+    width: 327px;
+    height: 40px;
+    padding-left: 20px;
+    display: block;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid skyblue;   
+}
+
+.add button {
+    width: 330px;
+    height: 40px;
+    border: 1px solid;
+    background: orange;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.add button:hover {
+    background: white;
+    color: orange;
+}
