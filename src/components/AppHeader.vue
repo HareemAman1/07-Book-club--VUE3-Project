@@ -7,21 +7,27 @@
   <router-link to="/add">Add Book</router-link>
   
   <!-- ** 56: LOGOUT FUNCTIONALITY ** -->
-  <a v-on:click="logout" href="#">Logout</a>
+  <a @click="logout" href="#">Logout</a>
 </div>
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 export default {
     name:'AppHeader',
-    methods:{
+    setup(){
+    const router = useRouter()
+
         // ** 56: LOGOUT FUNCTIONALITY **
-        logout(){
+        const logout = () => {
             localStorage.clear();
-            this.$router.push({name: 'AppLogin'})
+            router.push({name: 'AppLogin'})
         }
-    }
-}
+        return{
+            logout
+        }
+}}
+
 </script>
 
 <style>

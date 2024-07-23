@@ -13,7 +13,7 @@
         <option value="series">Series</option>
         <option value="standalone">Standalone</option>
     </select>
-    <button type="button" v-on:click="add">Add</button>
+    <button type="button" @click="add">Add</button>
 </form>
 <AppFooter />
 </template>
@@ -22,6 +22,8 @@
 import AppHeader from './AppHeader.vue'
 import AppFooter from './AppFooter.vue'
 import axios from "axios";
+import { useRouter } from 'vue-router';
+import { onMounted, ref } from 'vue';
 export default {
     name: 'AppAdd',
     components: {
@@ -29,41 +31,46 @@ export default {
         AppHeader,
         AppFooter
     },
-    data() {
-        return {
-            // ** 60: FORM FOR ADD **
-            book: {
-                name: '',
-                author: '',
-                type: ''
-            }
-        }
-    },
-    methods:{
-        // ** 60: FORM FOR ADD **
-        async add(){
-            console.warn('added', this.book);
+    setup() {
+        const router = useRouter()
+        const book = ref({
+            name: '',
+            author: '',
+            type: ''
+        })
+    
+
+    // ** 60: FORM FOR ADD **
+        const add = async () => {
+            console.warn('added', book.value);
 
             // **61: CALL API FOR ADD **
-            const result = await axios.post('http://localhost:3000/book',{
-                name: this.book.name,
-                author: this.book.author,
-                type: this.book.type
+            const result = await axios.post('http://localhost:3000/book', {
+                name: book.value.name,
+                author: book.value.author,
+                type: book.value.type
             })
-            if(result.status==201){
-                this.$router.push({name:'AppHome'})
+            if (result.status == 201) {
+                router.push({
+                    name: 'AppHome'
+                })
             }
             console.warn(result);
         }
-    },
-    mounted() {
+
+    onMounted(() => {
         // ** 52: COMPLETE SIGNUP AND REDIRECTION **
         let user = localStorage.getItem('user-info')
         if (!user) {
-            this.$router.push({
+            router.push({
                 name: 'AppSignup'
             })
         }
+    })
+    return{
+        book,
+        add
+    }
     }
 }
 </script>

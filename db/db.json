@@ -41,14 +41,20 @@
       "name": "test",
       "email": "test@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "ba40",
+      "name": "hammad",
+      "email": "hammad@gmail.com",
+      "password": "123"
     }
   ],
   "book": [
     {
-      "id": "b14b",
       "name": "wrong number",
       "author": "r l stine",
-      "type": "standalone"
+      "type": "standalone",
+      "id": "b14b"
     },
     {
       "id": "b374",
@@ -85,6 +91,12 @@
       "author": "hd carlton",
       "type": "series",
       "id": "bf91"
+    },
+    {
+      "id": "5009",
+      "name": "AGGGTM",
+      "author": "Holly black",
+      "type": "series"
     }
   ]
 }

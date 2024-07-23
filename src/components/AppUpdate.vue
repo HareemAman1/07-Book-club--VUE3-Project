@@ -12,62 +12,66 @@
         <option value="series">Series</option>
         <option value="standalone">Standalone</option>
     </select>
-    <button type="button" v-on:click="update">Update</button>
-</form>
-<AppFooter />
+    <button type="button" @click="update">Update</button>
+  </form>
+  <AppFooter />
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue'
-import AppFooter from './AppFooter.vue'
-import axios from "axios";
-export default {
-    name:'AppUpdate',
-    components:{
-        // ** 55: MAKE HEADER **
-        AppHeader,
-        AppFooter
-    },
-     data() {
-        return {
-            // ** 62: UPDATE **
-            book: {
-                name: '',
-                author: '',
-                type: ''
-            }
-        }
-    },
-    methods:{
-        // ** 64: UPDATE FUNCTIONALITY **
-        async update(){
-            console.log('updated', this.book);
-            const result = await axios.put('http://localhost:3000/book/'+this.$route.params.id,{
-                name: this.book.name,
-                author: this.book.author,
-                type: this.book.type
-            })
-            if(result.status==200){
-                this.$router.push({name:'AppHome'})
-            }
-            console.warn(result);
-        }
-    },
-    async mounted(){
-        // ** 52: COMPLETE SIGNUP AND REDIRECTION **
-        let user = localStorage.getItem('user-info')
-        if (!user){
-            this.$router.push({name:'AppSignup'})
-        }
+import { ref, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import axios from 'axios';
+import AppHeader from './AppHeader.vue';
+import AppFooter from './AppFooter.vue';
 
-        // ** 63: PREFILL UPDATE **
-        const result = await axios.get('http://localhost:3000/book/'+this.$route.params.id);
-        console.warn(result);
-        this.book=result.data
-    }
-}
+export default {
+  name: 'AppUpdate',
+  components: {
+    AppHeader,
+    AppFooter
+  },
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+    const book = ref({
+      name: '',
+      author: '',
+      type: ''
+    });
+
+    const update = async () => {
+      console.log('updated', book.value);
+      const result = await axios.put(`http://localhost:3000/book/${route.params.id}`, {
+        name: book.value.name,
+        author: book.value.author,
+        type: book.value.type
+      });
+      if (result.status === 200) {
+        router.push({ name: 'AppHome' });
+      }
+      console.warn(result);
+    };
+
+    onMounted(async () => {
+      // ** 52: COMPLETE SIGNUP AND REDIRECTION **
+      let user = localStorage.getItem('user-info');
+      if (!user) {
+        router.push({ name: 'AppSignup' });
+      }
+
+      // ** 63: PREFILL UPDATE **
+      const result = await axios.get(`http://localhost:3000/book/${route.params.id}`);
+      console.warn(result);
+      book.value = result.data;
+    });
+
+    return {
+      book,
+      update
+    };
+  }
+};
 </script>
 
 <style>
-
 </style>
