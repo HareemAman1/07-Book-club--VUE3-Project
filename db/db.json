@@ -47,15 +47,15 @@
       "name": "hammad",
       "email": "hammad@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "2f27",
+      "name": "qq",
+      "email": "qq@dd.com",
+      "password": "123"
     }
   ],
   "book": [
-    {
-      "name": "wrong number",
-      "author": "r l stine",
-      "type": "standalone",
-      "id": "b14b"
-    },
     {
       "id": "b374",
       "name": "selection",
@@ -97,6 +97,12 @@
       "name": "AGGGTM",
       "author": "Holly black",
       "type": "series"
+    },
+    {
+      "name": "ww",
+      "author": "w",
+      "type": "standalone",
+      "id": "d4a2"
     }
   ]
 }
