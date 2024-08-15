@@ -94,6 +94,7 @@ export default {
 </script>
 
 <style scoped>
+
 table {
   margin: auto;
   margin-bottom: 100px;
@@ -151,4 +152,5 @@ a {
   background: crimson;
   color: white;
 }
+
 </style>
